@@ -23,13 +23,19 @@ export const site = {
       id: 'studio1',
       label: 'Studio 1',
       address: '[Da confermare] Indirizzo dello studio 1.',
-      images: [],
+      images: [
+        'images/studio1/image.jpeg',
+        'images/studio1/12.30.52.jpeg',
+        'images/studio1/12.30.53.jpeg',
+        'images/studio1/12.30.54.jpeg',
+      ],
     },
     {
       id: 'studio2',
       label: 'Studio 2',
       address: '[Da confermare] Indirizzo dello studio 2.',
       images: [],
+      note: '[Da confermare] Le foto del secondo studio arrivano dal cliente.',
     },
   ],
 
