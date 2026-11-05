@@ -50,6 +50,9 @@ Until this arrives, use placeholders clearly marked in the content files.
 - Sessions 1 to 3 done and committed
 - Graphics redesign committed, inspired by centroclinicoparacelso.org: flat dusty blue blocks, full width photo and text splits, blue headings, wave hero kept
 - Visual check with a headless browser was unreliable because other projects occupied the preview ports, verify manually with `npm.cmd run dev`
+- Session 5 started: live on GitHub Pages at `https://murphy-afk.github.io/therapist-ursino/` for client review
+- `.github/workflows/deploy.yml` builds and deploys on every push to `master`, Pages source is set to GitHub Actions
+- Still pending in session 5: final hosting after client approval, Express wiring only if the final host needs a backend
 
 ## Phases (sessions)
 
