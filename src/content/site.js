@@ -8,6 +8,8 @@ export const site = {
     'Studio di consulenza psicologica. Uno spazio tranquillo per parlare, con due sedi.',
   homeBlurb:
     '[Da confermare] Breve testo di presentazione per la sezione home.',
+  homeQuote:
+    '[Da confermare] La citazione scelta da Giulia per la home.',
   pendingNote:
     '[Da confermare] Biografia, tipo di terapia, citazione, contatti e seconda sede arrivano dal cliente.',
 
@@ -37,8 +39,13 @@ export const site = {
       id: 'studio2',
       label: 'Studio 2',
       address: '[Da confermare] Indirizzo dello studio 2.',
-      images: [],
-      note: '[Da confermare] Le foto del secondo studio arrivano dal cliente.',
+      images: [
+        'images/studio2/1.jpeg',
+        'images/studio2/2.jpeg',
+        'images/studio2/3.jpeg',
+        'images/studio2/4.jpeg',
+        'images/studio2/5.jpeg',
+      ],
     },
   ],
 

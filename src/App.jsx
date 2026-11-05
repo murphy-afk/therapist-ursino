@@ -22,9 +22,7 @@ export default function App() {
   return (
     <div className="app">
       <Header route={route} />
-      <main className="page">
-        <Page />
-      </main>
+      <main><Page /></main>
       <Footer />
     </div>
   )

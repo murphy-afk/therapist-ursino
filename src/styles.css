@@ -2,11 +2,10 @@
   --sea: #5580b3;
   --sea-deep: #3a5f8f;
   --sea-soft: #7ea4cc;
-  --sand: #f6f1e7;
-  --paper: #fbf9f4;
-  --text: #55606b;
-  --muted: #8a94a0;
+  --sand: #dbc49c;
   --line: #e8e2d6;
+  --line-sand: #c9b286;
+  --text: #55606b;
 }
 
 * {
@@ -18,7 +17,7 @@
 body {
   font-family: system-ui, sans-serif;
   color: var(--text);
-  background: var(--paper);
+  background: #ffffff;
   line-height: 1.75;
   overflow-x: clip;
 }
@@ -27,6 +26,10 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+}
+
+main {
+  flex: 1;
 }
 
 /* header */
@@ -41,7 +44,7 @@ body {
   justify-content: space-between;
   gap: 12px;
   padding: 18px 64px;
-  background: rgba(251, 249, 244, 0.92);
+  background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(8px);
   border-bottom: 1px solid var(--line);
 }
@@ -76,14 +79,34 @@ body {
   border-bottom-color: var(--sea);
 }
 
-/* layout */
+/* bands, the base layout unit: every section is full width */
 
-.page {
-  flex: 1;
-  width: 100%;
+.band-inner {
   max-width: 900px;
   margin: 0 auto;
   padding: 56px 40px;
+}
+
+.band-white {
+  background: #ffffff;
+}
+
+.band-sand {
+  background: var(--sand);
+}
+
+.band-sea {
+  background: var(--sea);
+  color: #ffffff;
+}
+
+.band-sea h1,
+.band-sea h2 {
+  color: #ffffff;
+}
+
+.band-sea p {
+  color: rgba(255, 255, 255, 0.92);
 }
 
 h1 {
@@ -100,27 +123,29 @@ h2 {
   margin-bottom: 8px;
 }
 
+/* headings on sand need the darker blue to stay readable */
+
+.band-sand h1,
+.band-sand h2,
+.split h1,
+.split h2 {
+  color: var(--sea-deep);
+}
+
 p {
   margin-bottom: 16px;
 }
 
-/* full width helper */
-
-.bleed {
-  width: 100vw;
-  margin-left: calc(50% - 50vw);
-}
-
-/* hero name card, kept from the first design */
+/* hero band with wave, the name card kept */
 
 .hero {
   position: relative;
   overflow: hidden;
-  padding: 64px 48px 96px;
-  border-radius: 18px;
-  background: linear-gradient(135deg, var(--sea-deep) 0%, var(--sea) 60%, var(--sea-soft) 100%);
-  color: #ffffff;
-  box-shadow: 0 12px 32px rgba(58, 95, 143, 0.16);
+}
+
+.hero .band-inner {
+  padding-top: 72px;
+  padding-bottom: 72px;
 }
 
 .hero h1 {
@@ -153,53 +178,88 @@ p {
   gap: 20px;
 }
 
-.hero-link {
+.button-outline {
+  display: inline-block;
+  padding: 12px 28px;
+  background: transparent;
   color: #ffffff;
+  text-decoration: none;
+  border-radius: 999px;
   font-size: 0.95rem;
-  text-decoration: underline;
-  text-underline-offset: 4px;
-  opacity: 0.9;
+  box-shadow: inset 0 0 0 1.5px rgba(255, 255, 255, 0.9);
+  transition: background 0.2s;
 }
 
-.hero-link:hover {
-  opacity: 1;
+.button-outline:hover {
+  background: rgba(255, 255, 255, 0.15);
 }
 
-.hero-wave {
+/* sand quote band with a wave on top, continues the hero edge */
+
+.quote-band {
+  position: relative;
+}
+
+.quote-band .band-inner {
+  padding-top: 120px;
+  padding-bottom: 72px;
+}
+
+.band-wave {
   position: absolute;
+  top: 0;
   left: 0;
-  bottom: 0;
   display: block;
   width: 100%;
   height: 70px;
 }
 
-.hero-wave path {
-  fill: var(--paper);
+.band-wave path {
+  fill: var(--sea);
 }
 
-/* split sections, inspired by the reference site */
+blockquote.quote-large {
+  margin: 0 auto;
+  max-width: 640px;
+  padding: 0;
+  background: none;
+  color: var(--sea-deep);
+  text-align: center;
+  font-size: 1.45rem;
+  line-height: 1.7;
+}
+
+/* split bands: photo half and sand text half */
 
 .split {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  margin-top: 32px;
-  margin-bottom: 32px;
-  background: #ffffff;
+  background: var(--sand);
   border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
+}
+
+.split:first-child {
+  border-top: none;
+}
+
+.hero + .split {
+  border-top: none;
+}
+
+.split-reverse .split-image {
+  order: 2;
+}
+
+.split-reverse .split-text {
+  order: 1;
 }
 
 .split-image {
   display: block;
   width: 100%;
   height: 100%;
-  min-height: 340px;
+  min-height: 380px;
   object-fit: cover;
-}
-
-.split-placeholder {
-  background: linear-gradient(135deg, var(--sand), #ece4d3);
 }
 
 .split-text {
@@ -213,50 +273,20 @@ p {
   max-width: 60ch;
 }
 
-.text-link {
-  color: var(--sea);
-  font-weight: 600;
-  text-decoration: none;
-}
-
-.text-link:hover {
-  text-decoration: underline;
-  text-underline-offset: 4px;
-}
-
-/* blue band, like the theory section of the reference site */
-
-.band-blue {
-  background: var(--sea);
-  color: #ffffff;
-  padding: 56px 24px;
-}
-
-.band-inner {
-  max-width: 720px;
-  margin: 0 auto;
-}
-
-.band-blue p {
-  color: rgba(255, 255, 255, 0.92);
-  margin-bottom: 0;
-}
-
-/* quote block */
+/* quote inside sand text half */
 
 blockquote {
   margin-top: 20px;
   padding: 28px 32px;
   background: var(--sea);
   color: #ffffff;
-  border-radius: 10px;
   font-family: Georgia, 'Times New Roman', serif;
   font-style: italic;
   font-size: 1.05rem;
   line-height: 1.7;
 }
 
-/* buttons */
+/* buttons stay pill shaped as controls */
 
 .button {
   display: inline-block;
@@ -293,12 +323,21 @@ blockquote {
 
 .gallery-thumb {
   padding: 0;
-  border: none;
+  border: 2px solid transparent;
   background: none;
   cursor: pointer;
   aspect-ratio: 4 / 3;
   overflow: hidden;
-  border-radius: 8px;
+  opacity: 0.6;
+}
+
+.gallery-thumb:hover {
+  opacity: 1;
+}
+
+.gallery-thumb.active {
+  opacity: 1;
+  border-color: var(--sea);
 }
 
 .gallery-thumb img {
@@ -313,83 +352,31 @@ blockquote {
   transform: scale(1.04);
 }
 
-.lightbox {
-  position: fixed;
-  inset: 0;
-  z-index: 10;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 24px;
-  background: rgba(58, 95, 143, 0.94);
-}
-
-.lightbox-image {
-  max-width: 100%;
-  max-height: 80vh;
-  object-fit: contain;
-  border-radius: 6px;
-}
-
-.lightbox-close,
-.lightbox-prev,
-.lightbox-next {
-  position: absolute;
-  padding: 10px 18px;
-  border: none;
-  border-radius: 999px;
-  background: #ffffff;
-  color: var(--sea-deep);
-  font-size: 0.9rem;
-  cursor: pointer;
-}
-
-.lightbox-close {
-  top: 16px;
-  right: 16px;
-}
-
-.lightbox-prev {
-  left: 16px;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-.lightbox-next {
-  right: 16px;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-/* contacts */
+/* contacts rows inside the sand band */
 
 .contact-list {
   display: flex;
   flex-direction: column;
-  gap: 12px;
 }
 
-.contact-item {
-  margin-bottom: 0;
-  padding: 18px 24px;
-  background: #ffffff;
-  border: 1px solid var(--line);
-  border-radius: 8px;
+.contact-row {
+  margin: 0;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--line-sand);
 }
 
-.pending {
-  color: var(--muted);
-  font-style: italic;
+.contact-row:last-child {
+  border-bottom: none;
 }
 
 /* footer */
 
 .footer {
   padding: 32px 64px;
-  background: var(--sand);
+  background: #ffffff;
   border-top: 1px solid var(--line);
   text-align: center;
-  color: var(--muted);
+  color: var(--text);
   font-size: 0.9rem;
 }
 
@@ -404,13 +391,27 @@ blockquote {
     padding: 16px 24px;
   }
 
-  .page {
+  .band-inner {
     padding: 40px 24px;
   }
 
-  .hero {
-    padding: 44px 28px 84px;
-    border-radius: 14px;
+  .hero .band-inner {
+    padding-top: 48px;
+    padding-bottom: 48px;
+  }
+
+  .quote-band .band-inner {
+    padding-top: 100px;
+    padding-bottom: 48px;
+  }
+
+  blockquote.quote-large {
+    font-size: 1.2rem;
+  }
+
+  .split-reverse .split-image,
+  .split-reverse .split-text {
+    order: 0;
   }
 
   .hero h1 {
@@ -426,15 +427,11 @@ blockquote {
   }
 
   .split-image {
-    min-height: 240px;
+    min-height: 260px;
   }
 
   .split-text {
     padding: 36px 24px;
-  }
-
-  .band-blue {
-    padding: 40px 24px;
   }
 
   .footer {
