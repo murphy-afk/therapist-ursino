@@ -5,9 +5,11 @@ export default function Contacts() {
   return (
     <section>
       <h1>Contatti</h1>
-      <p>{contacts.email}</p>
-      <p>{contacts.phone}</p>
-      <p>{contacts.address}</p>
+      <div className="contact-list">
+        <p className="contact-item">{contacts.email}</p>
+        <p className="contact-item">{contacts.phone}</p>
+        <p className="contact-item">{contacts.address}</p>
+      </div>
     </section>
   )
 }
