@@ -6,6 +6,8 @@ export const site = {
   title: 'Psicologa',
   intro:
     'Studio di consulenza psicologica. Uno spazio tranquillo per parlare, con due sedi.',
+  homeBlurb:
+    '[Da confermare] Breve testo di presentazione per la sezione home.',
   pendingNote:
     '[Da confermare] Biografia, tipo di terapia, citazione, contatti e seconda sede arrivano dal cliente.',
 

@@ -45,6 +45,12 @@ Until this arrives, use placeholders clearly marked in the content files.
 - Mobile first, responsive on all sizes
 - Images optimized before use
 
+## Current status
+
+- Sessions 1 to 3 done and committed
+- Graphics redesign committed, inspired by centroclinicoparacelso.org: flat dusty blue blocks, full width photo and text splits, blue headings, wave hero kept
+- Visual check with a headless browser was unreliable because other projects occupied the preview ports, verify manually with `npm.cmd run dev`
+
 ## Phases (sessions)
 
 ### Session 1: project setup

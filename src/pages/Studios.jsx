@@ -1,21 +1,34 @@
 import { site } from '../content/site.js'
 import Gallery from '../components/Gallery.jsx'
 
+const base = import.meta.env.BASE_URL
+
 export default function Studios() {
   return (
-    <section>
+    <div>
       <h1>Studi</h1>
       {site.studios.map((studio) => (
-        <article key={studio.id} className="studio">
-          <h2>{studio.label}</h2>
-          <p>{studio.address}</p>
+        <section key={studio.id} className="split">
           {studio.images.length > 0 ? (
-            <Gallery images={studio.images} />
+            <img
+              className="split-image"
+              src={`${base}${studio.images[0]}`}
+              alt={studio.label}
+            />
           ) : (
-            <p className="pending">{studio.note}</p>
+            <div className="split-image split-placeholder" aria-hidden="true"></div>
           )}
-        </article>
+          <div className="split-text">
+            <h2>{studio.label}</h2>
+            <p>{studio.address}</p>
+            {studio.images.length > 0 ? (
+              <Gallery images={studio.images} />
+            ) : (
+              <p className="pending">{studio.note}</p>
+            )}
+          </div>
+        </section>
       ))}
-    </section>
+    </div>
   )
 }

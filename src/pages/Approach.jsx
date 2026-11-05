@@ -2,11 +2,13 @@ import { site } from '../content/site.js'
 
 export default function Approach() {
   return (
-    <section>
+    <div>
       <h1>Approccio</h1>
-      <div className="card">
-        <p>{site.approach.text}</p>
+      <div className="bleed band-blue">
+        <div className="band-inner">
+          <p>{site.approach.text}</p>
+        </div>
       </div>
-    </section>
+    </div>
   )
 }
